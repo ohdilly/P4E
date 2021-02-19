@@ -1,0 +1,4 @@
+  PID   TT  STAT      TIME COMMAND
+61252 s000  Ss     0:00.02 login -pfl kevindill200112 /bin/bash -c exec -la bash /bin/bash
+61253 s000  S      0:00.08 -bash
+61334 s000  R+     0:00.00 ps a
