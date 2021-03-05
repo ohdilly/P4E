@@ -6,9 +6,9 @@ cur = conn.cursor()
 cur.execute('DROP TABLE IF EXISTS Counts')
 
 cur.execute('''
-CREATE TABLE Counts (orgs TEXT, count INTEGER)''')
+CREATE TABLE Counts (org TEXT, count INTEGER)''')
 
-fname = 'mbox-short.txt'
+fname = 'mbox.txt'
 ##if (len(fname) < 1): fname = 'mbox-short.txt'
 fh = open(fname)
 for line in fh:
@@ -16,18 +16,18 @@ for line in fh:
     pieces = line.split()
     email = pieces[1]
     orgs = email.split('@')
-    cur.execute('SELECT count FROM Counts WHERE orgs = ? ', (orgs[1],))
+    cur.execute('SELECT count FROM Counts WHERE org = ? ', (orgs[1],))
     row = cur.fetchone()
     if row is None:
-        cur.execute('''INSERT INTO Counts (orgs, count)
+        cur.execute('''INSERT INTO Counts (org, count)
                 VALUES (?, 1)''', (orgs[1],))
     else:
-        cur.execute('UPDATE Counts SET count = count + 1 WHERE orgs = ?',
+        cur.execute('UPDATE Counts SET count = count + 1 WHERE org = ?',
                     (orgs[1],))
     conn.commit()
 
 # https://www.sqlite.org/lang_select.html
-sqlstr = 'SELECT orgs, count FROM Counts ORDER BY count DESC LIMIT 10'
+sqlstr = 'SELECT org, count FROM Counts ORDER BY count DESC LIMIT 10'
 
 for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
