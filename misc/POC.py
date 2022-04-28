@@ -11,7 +11,7 @@ cred = '''<credentials xmlns="urn:imany">
     <username>carsflexp</username>
     <password>Login2RTS!</password>
     <enterpriseCode>SYSTM</enterpriseCode>
-</credentials>'''
+    </credentials>'''
 
 job_data = {
 'name':'APS_MDM_UPD_PRODID',
@@ -95,7 +95,7 @@ if sc == 200:
     print(sc)
 
 if sc == 200:
-    response = requests.post(url=api_job,headers=hdr, data=json.dumps(actvt_data), cookies=kookie )
+    response = requests.post(url=api_job,headers=hdr, data=json.dumps(actvt_data,indent=4), cookies=kookie )
     sc = response.status_code
     print(response.content)
     print(sc)
