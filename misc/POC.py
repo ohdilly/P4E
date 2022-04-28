@@ -22,7 +22,7 @@ job_data = {
 'value': '61953000400'
 },
 {
-'name':'PARAM2_SAP_MATNO',
+'name':'PARAM_2_SAP_MATNO',
 'value': '123451'
 },
 {

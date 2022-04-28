@@ -21,7 +21,7 @@
 {
 "name":"DATA SOURCE",
 "value": "RM/MDM/MRB"
-}
+},
 {
 "name":"PROCESS TYPE",
 "value": "APS_MDM_UPD_PRODID"
