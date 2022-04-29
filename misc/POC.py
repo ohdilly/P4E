@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 tkn = ''
 base_url = 'https://grifols-ps1.cloud.modeln.com/ecmws/resources/'
 api_token = base_url + 'token'
@@ -8,8 +9,8 @@ api_job = base_url + 'job/run'
 api_activate = base_url + 'job/bizfunction'
 
 cred = '''<credentials xmlns="urn:imany">
-    <username>carsflexp</username>
-    <password>Login2RTS!</password>
+    <username>TestWSDemo</username>
+    <password>OJXMcPG8#5wWFl9</password>
     <enterpriseCode>SYSTM</enterpriseCode>
     </credentials>'''
 
