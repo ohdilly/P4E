@@ -4,16 +4,18 @@ import re
 
 
 tkn = ''
-base_url = 'https://grifols-ps1.cloud.modeln.com/ecmws/resources/'
-api_token = base_url + 'token'
-api_job = base_url + 'job/run'
-api_activate = base_url + 'job/bizfunction'
+base_url = 'https://grifols-ps1.cloud.modeln.com'
+##base_url ='https://grifols-qa1.cloud.modeln.com'
+api_token = base_url + '/ecmws/resources/token'
+api_job = base_url + '/ecmws/resources/job/run'
+api_activate = base_url + '/ecmws/resources/job/bizfunction'
 
+#replace '*' with UID and PWD
 cred = '''<credentials xmlns="urn:imany">
-    <username>TestWSDemo</username>
-    <password>OJXMcPG8#5wWFl9</password>
+    <username>carsflexp</username>
+    <password>Login2RTS!</password>
     <enterpriseCode>SYSTM</enterpriseCode>
-    </credentials>'''
+</credentials>'''
 
 job_data = {
 'name':'APS_MDM_UPD_PRODID',
@@ -21,15 +23,15 @@ job_data = {
 [
 {
 'name':'PARAM_1_NDC11',
-'value': '61953000505'
+'value': '68516521604'
 },
 {
 'name':'PARAM_2_SAP_MATNO',
-'value': '1234519'
+'value': '23497844'
 },
 {
 'name':'PARAM_3_START_DATE',
-'value': '20220401'
+'value': '20220601'
 },
 {
 'name':'EXECUTION TYPE',
@@ -88,9 +90,9 @@ for x in rslts:
     if y[0] == 'value':
         tkn= re.findall(r'"([^"]*)"', x.decode("utf-8"))
 
-print(tkn[0])
+##print(tkn[0])
 sc = response.status_code
-print(sc)
+print("Response Status Code:" + str(sc))
 
 kookie = {'ECMSSOToken' : tkn[0]}
 hdr = {"Content-Type": "application/json"}
@@ -99,15 +101,16 @@ hdr = {"Content-Type": "application/json"}
 if sc == 200:
     response = requests.post(url=api_job,headers=hdr, data=json.dumps(job_data,indent=4), cookies=kookie )
     sc = response.status_code
-    print(response.content)
-    print(sc)
+    ##print(response.content)
+    print("Response Status Code:" + str(sc))
 
 #Activate Product
-if sc == 200:
-    response = requests.post(url=api_job,headers=hdr, data=json.dumps(actvt_data,indent=4), cookies=kookie )
-    sc = response.status_code
-    print(response.content)
-    print(sc)
+##if sc == 200:
+##if True:
+ ##   response = requests.post(url=api_job,headers=hdr, data=json.dumps(actvt_data,indent=4), cookies=kookie )
+ ##   sc = response.status_code
+##    print(response.content)
+ ##   print("Response Status Code:" + str(sc))
 
 response.close()
 
